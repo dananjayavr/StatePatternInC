@@ -18,5 +18,5 @@ static void defaultStart(WatchStatePtr state)
 void defaultImplementation(WatchStatePtr state)
 {
 	state->start = defaultStart;
-	state->start = defaultStop;
+	state->stop = defaultStop;
 }

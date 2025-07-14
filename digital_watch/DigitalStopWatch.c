@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "DigitalStopWatch.h"
 
+#include <string.h>
+
 #if 0
 /*
     If the watch is stopped, a stopEvent keeps it stopped, startEvent makes it started.
@@ -31,11 +33,17 @@ void stopWatch(DigitalStopWatchPtr instance) {
 	}
 }
 #else
+
 void startWatch(DigitalStopWatchPtr instance) {
-	instance->state.start(&instance->state);
+	if (strcmp(instance->state.name,"started") != 0) {
+		instance->state.start(&instance->state);
+	}
 }
 
 void stopWatch(DigitalStopWatchPtr instance) {
-	instance->state.stop(&instance->state);
+	if (strcmp(instance->state.name,"stopped") != 0) {
+		instance->state.stop(&instance->state);
+	}
 }
+
 #endif

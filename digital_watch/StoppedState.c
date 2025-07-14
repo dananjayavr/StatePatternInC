@@ -1,5 +1,6 @@
 #include "StoppedState.h"
 #include "StartedState.h"
+#include "log.h"
 
 static void startWatch(WatchStatePtr state)
 {
@@ -14,4 +15,5 @@ void transitionToStopped(WatchStatePtr state)
 	defaultImplementation(state);
 	state->start = startWatch;
 	state->name = "stopped";
+	LOG_INFO("Transitioning to stopped\n");
 }
